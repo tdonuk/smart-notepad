@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './components/HomeScreen';
+import CreateNewNoteScreen from './components/CreateNewNoteScreen';
+import Styles from './Styles';
+import DefaultTitlebar from './components/base/DefaultTitlebar';
+import Environment from './Environment';
+import StringResources from './StringResources';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const stack = createNativeStackNavigator();
+
+const defaultScreenOptions = (opts) => {
+  return {
+    statusBarColor: Styles.background1,
+    headerTintColor: Styles.foreground2,
+    headerStyle: {
+      backgroundColor: Styles.background1
+    },
+    headerTitle: (props) => <DefaultTitlebar {...props} title={opts.title} />
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  console.log("app locale: " + Environment.locale);
+  return (
+    <NavigationContainer>
+      <stack.Navigator>
+        <stack.Screen name="Home" options={{ ...defaultScreenOptions({ title: StringResources.get("title.notes") }) }} component={HomeScreen} />
+        <stack.Screen name="CreateNote" options={{ ...defaultScreenOptions({ title: StringResources.get("title.create") }) }} component={CreateNewNoteScreen} />
+      </stack.Navigator>
+    </NavigationContainer>
+  );
+}
