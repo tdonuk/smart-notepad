@@ -2,7 +2,7 @@ import {Image, Modal, Text, TouchableOpacity, View} from "react-native";
 import {useEffect, useState} from "react";
 import {Gesture, GestureDetector, GestureHandlerRootView} from "react-native-gesture-handler";
 import Animated, {useAnimatedStyle, useSharedValue} from "react-native-reanimated";
-import styles from "../../Styles";
+import Styles from "../../Styles";
 
 export default function DefaultImageViewer(props) {
     const[modalViewerVisible, setModalViewerVisible] = useState(false);
@@ -89,7 +89,7 @@ export default function DefaultImageViewer(props) {
                     }}>
                         <GestureHandlerRootView style={{flex: 1, justifyContent: 'center'}}>
                             <GestureDetector gesture={gestures}>
-                                <View style={{justifyContent: 'center', display: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
+                                <View style={{display: "absolute", top: 0, left: 0, width: '100%', height: '100%'}}>
                                     <Animated.Image source={{ uri: props.image }} style={[{ width: '100%', height: undefined, aspectRatio: ratio, borderWidth: 1, borderColor: styles.borderColor2, borderRadius: Styles.borderRadius2 }, animatedStyle]} resizeMode={'contain'}/>
                                 </View>
                             </GestureDetector>
