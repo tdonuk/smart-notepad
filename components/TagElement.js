@@ -1,4 +1,4 @@
-import { Pressable, Text ,} from "react-native";
+import {Text, TouchableOpacity,} from "react-native";
 
 export default function TagElement(props) {
     const tag = props.tag;
@@ -7,8 +7,8 @@ export default function TagElement(props) {
     const selectedStyle = { padding: 5, backgroundColor: 'whitesmoke', color: 'black', borderRadius: 10, margin: 5, borderWidth: 1, borderColor: 'gray' };
 
     return (
-        <Pressable style={props.selected ? selectedStyle : unselectedStyle} onPress={props.press}>
-            <Text style={{color: props.selected ? selectedStyle.color : unselectedStyle.color}}>{tag}{props.count && " (" + props.count + ")"}</Text>
-        </Pressable>
+        <TouchableOpacity style={props.selected ? selectedStyle : unselectedStyle} onPress={props.press}>
+            <Text style={{color: props.selected ? selectedStyle.color : unselectedStyle.color}}>{tag}{props.count && (" (" + props.count + ")")}</Text>
+        </TouchableOpacity>
     );
 }

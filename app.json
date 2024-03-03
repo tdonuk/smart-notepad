@@ -16,7 +16,12 @@
     ],
     "android": {
       "package": "com.smartnotepad.smartnotepad",
-      "versionCode": 1
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.CAMERA_ROLL"
+      ]
     },
     "web": {
       "favicon": "./assets/icon.png"
@@ -25,6 +30,22 @@
       "eas": {
         "projectId": "165791f0-18e9-4322-9728-6b8590ccd256"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "You need to grant this permission to use this app"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow Smart Notepad to access your photos.",
+          "savePhotosPermission": "Allow Smart Notepad to save photos.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
   }
 }

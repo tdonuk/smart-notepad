@@ -1,4 +1,4 @@
-import { TextInput } from "react-native";
+import {TextInput} from "react-native";
 import Styles from "../../Styles";
 
 export default function TextBox(props) {
